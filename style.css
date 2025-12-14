@@ -1,0 +1,88 @@
+@font-face {
+	font-family: 'Comfortaa';
+	src: url(fonts/Comfortaa-Medium.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	background-color: #B8E1D9;
+}
+
+#helper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	margin: 5px;
+}
+
+#head {
+	display: flex;
+	gap: 10px;
+	padding: 10px;
+	background-color: #5EBAA6;
+	color: #237C6C;
+	font-family: Comfortaa;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+#create_list {
+	font-size: 20px;
+	margin-left: auto;
+}
+
+button {
+	border-style: none;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-family: Comfortaa;
+	border-radius: 10px;
+	background-color: #237C6C;
+	color: white;
+	font-size: 1.5rem;
+	transition: background-color 0.2s ease, transform 50ms ease-out;
+}
+
+button:hover {
+	background-color: #247365;
+}
+
+button:active {
+	background-color: #1f5c51;
+	transform: scale(0.95, 0.95);
+}
+
+.todo_buttons {
+	display: flex;
+}
+
+.create_todo_element {
+	font-size: 15px;
+	border-radius: 5px;
+}
+
+.remove_todo_element {
+	margin-left: auto;
+	font-size: 15px;
+	border-radius: 5px;
+}
+
+.todo_element {
+	display: flex;
+}
+
+.todo {
+	padding: 10px;
+	background-color: #5EBAA6;
+	color: #237C6C;
+	font-family: Comfortaa;
+	border-radius: 10px;
+	font-size: 14px;
+	box-sizing: content-box;
+}
+
+.imgborder {
+	border-radius: 10px;
+}
