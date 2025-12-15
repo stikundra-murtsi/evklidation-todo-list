@@ -75,7 +75,7 @@ function load() {
 	let lists = JSON.parse(load_json); // Парсинг JSON файла и получение массива с сохраненными листами
 
 	// Создание новых листов на основе сохраненных данных
-	for (let list_num = 0; list_num < lists.length; list_num++) {
+	for (let list_num = 0; list_num <= lists.length; list_num++) {
 		create_todo(); // Создаем пустышку
 		let loaded_list = lists[list_num]; // Получаем загруженный лист 
 
