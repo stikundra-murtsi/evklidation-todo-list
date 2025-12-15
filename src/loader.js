@@ -74,12 +74,12 @@ function load() {
 	let load_json = localStorage.getItem("ToDo"); // Получаем JSON файл листов из локального хранилища
 	
 	let lists
-	if (load_json != 0) {
-		lists = JSON.parse(load_json); // Парсинг JSON файла и получение массива с сохраненными листами
+	if (!load_json) { 
+		return; 
 	}
-	else {
-		return;
-	}
+
+	lists = JSON.parse(load_json); // Парсинг JSON файла и получение массива с сохраненными листами
+	
 	// Создание новых листов на основе сохраненных данных
 	for (let list_num = 0; list_num < lists.length; list_num++) {
 		create_todo(); // Создаем пустышку
