@@ -1,4 +1,6 @@
 import { save } from "./loader.js";
+import { rename } from "./rename.js";
+import { press_listener } from "./checker.js";
 
 // Удаление пункта
 export function rm_element(list, element) {
@@ -35,7 +37,6 @@ export function rename_element(list, element, new_name) {
 	else {
 		text.textContent = new_name;
 	}
-
 }
 
 // Переименовывание листа
@@ -47,20 +48,21 @@ export function rename_list(list, new_name) {
 	else {
 		text.textContent = new_name;
 	}
-	
 }
 
 // Визуальное переименование
 // Листа
-export function alt_rn_lst(list) {
-	let name = prompt("Введите имя листа:");
+export async function alt_rn_lst(list) {
+	let text = document.getElementById(`title, list: ${list}`);
+	const name = await rename(text.textContent);
 	rename_list(list, name);
 	save();
 }
 
 // Пункта
-export function alt_rn_el(list, element) {
-	let name = prompt("Введите имя пункта:");
+export async function alt_rn_el(list, element) {
+	let text = document.getElementById(`text, list: ${list}, element: ${element}`);
+	const name = await rename(text.textContent);
 	rename_element(list, element, name);
 	save();
 }
@@ -85,13 +87,14 @@ export function add_element(list) {
 	newel_check.type = "checkbox";
 	newel_check.classList.add("check_todo");
 	newel_check.dataset.num = el_num;
+	newel_check.dataset.list = list;
 
 	// Блок настройки наименования пункта
 	let newel_title = document.createElement("p");
 	newel.appendChild(newel_title);
 	newel_title.textContent = `Новый пункт`;
 	newel_title.id = `text, list: ${list}, element: ${el_num}`;
-	newel_title.ondblclick = () => alt_rn_el(list, el_num);
+	press_listener(newel_title, () => alt_rn_el(list, el_num));
 	
 	// Блок настройки кнопки "Удалить"
 	let newel_rmbtn = document.createElement("button");
@@ -126,13 +129,14 @@ export function create_todo() {
 	gendiv_title.textContent = "Новый лист";
 	gendiv_title.classList.add("todo_title");
 	gendiv_title.id = `title, list: ${list_num}`;
-	gendiv_title.ondblclick = () => alt_rn_lst(list_num);
+	press_listener(gendiv_title, () => alt_rn_lst(list_num));
 	
 	// Блок настройки области пунктов
 	let gendiv_subdiv = document.createElement("div");
 	generaldiv.appendChild(gendiv_subdiv);
 	gendiv_subdiv.dataset.elnum = 0;
 	gendiv_subdiv.id = `elements, list: ${list_num}`;
+	gendiv_subdiv.classList.add("elements_div");
 
 	// Блок настройки области кнопок
 	let gendiv_btndiv = document.createElement("div");

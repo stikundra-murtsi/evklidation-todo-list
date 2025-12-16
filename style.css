@@ -10,10 +10,15 @@ body {
 }
 
 #helper {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 10px;
+	column-gap: 10px;
+	column-count: 2;
 	margin: 5px;
+}
+
+@media (max-width: 800px) {
+	#helper {
+		column-count: 1;
+	}
 }
 
 #head {
@@ -25,7 +30,23 @@ body {
 	font-family: Comfortaa;
 	border-radius: 10px;
 	font-size: 20px;
+	margin-top: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
 	margin-bottom: 20px;
+	position: sticky;
+	top: 15px;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+#general_title {
+	display: block;
+}
+
+@media(max-width: 800px) {
+	#general_title {
+		display: none;
+	}
 }
 
 #create_list {
@@ -71,9 +92,31 @@ button:active {
 
 .todo_element {
 	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.elements_div {
+	display: flex;
+	flex-direction: column;	
+}
+
+.check_todo {
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background-color: white;
+	border: 0px;
+	border-radius: 5px;
+}
+
+.check_todo:checked {
+	background-color: #237C6C;
 }
 
 .todo {
+	margin-bottom: 10px;
+	break-inside: avoid;
 	padding: 10px;
 	background-color: #5EBAA6;
 	color: #237C6C;
@@ -81,6 +124,38 @@ button:active {
 	border-radius: 10px;
 	font-size: 14px;
 	box-sizing: content-box;
+}
+
+.rename {
+	font-size: 20px;
+	width: 300px;
+	background-color: #5EBAA6;
+	padding: 10px;
+	color: #237C6C;
+	font-family: Comfortaa;
+	border-radius: 10px;
+	position: absolute;
+	top: 100px;
+	right: 0px;
+	box-sizing: content-box;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+	padding: 10px;
+}
+
+@media(max-width: 800px) {
+	.rename {
+		width: 94.5%;
+	}
+}
+
+.rename_input {
+	font-family: Comfortaa;
+	font-size: 14px;
+	appearance: none;
+	width: 98.5%;
+	border: 0;
+	border-radius: 5px;
+	margin-bottom: 10px;
 }
 
 .imgborder {
